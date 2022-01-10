@@ -1,0 +1,37 @@
+#myCanvas{
+    width: 100%;
+    height: auto;
+}
+canvas { 
+  display:block; 
+}
+
+#title:hover{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+@-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px rgb(0, 255, 242), 0 0 20px rgb(0, 238, 218), 0 0 30px #00a5e6, 0 0 40px #00b0e6, 0 0 50px #00cbe6, 0 0 60px #00cbe6, 0 0 70px #009de6;
+    }
+    
+    to {
+      text-shadow: 0 0 20px rgb(255, 0, 221), 0 0 30px #ff4df0, 0 0 40px #ff4dd8, 0 0 50px #f94dff, 0 0 60px #db4dff, 0 0 70px #ff4de1, 0 0 80px #ff4dff;
+    }
+}
+
+body, h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+.w3-row-padding img {
+  margin-bottom: 12px
+}
+.w3-sidebar {
+  width: 120px;
+  background: #222;
+}
+/* sidebar width */
+#main {
+  margin-left: 120px
+}
+/* change margin for smaller screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 5px}}

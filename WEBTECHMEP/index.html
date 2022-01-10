@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>Martin's Website</title>
+        <meta name="description" content="WebTech MEP Project">
+        <meta name="author" content="Martin Höger">
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FONTS -->
+        <link href="//fonts.googleapis.com/css?family=Roboto:400,300,600" rel="stylesheet" type="text/css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="js/canvas.js"></script>
+        <script src="js/cookie.js"></script>
+        <script src="js/weather.js"></script>
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon-32x32.ico">
+    </head>
+    <body onload="draw();">
+        <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+            <a href="#" class="w3-bar-item w3-button w3-padding-large w3-border-dark-grey   ">
+                <img src="img/MLOGO.png" style="width:100%">
+            </a>
+            <a href="#information" class="w3-bar-item w3-button w3-padding-large w3-hover-black w3-text-white">
+            <p>INFO</p>
+            </a>
+            <a href="#formular" class="w3-bar-item w3-button w3-padding-large w3-hover-black w3-text-white">
+            <p>FORMULAR</p>
+            </a>
+            <a href="#canvas" class="w3-bar-item w3-button w3-padding-large w3-hover-black w3-text-white">
+            <p>CANVAS</p>
+            </a>
+            <a href="#weather" class="w3-bar-item w3-button w3-padding-large w3-hover-black w3-text-white">
+            <p>WETTER</p>
+            </a>
+        </nav>
+          <!--mobile navbar -->
+        <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+            <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+                <a href="#information" class="w3-bar-item w3-button" style="width:25% !important">INFORMATION</a>
+                <a href="#formular" class="w3-bar-item w3-button" style="width:25% !important">FORMULAR</a>
+                <a href="#canvas" class="w3-bar-item w3-button" style="width:25% !important">CANVAS</a>
+                <a href="#weather" class="w3-bar-item w3-button" style="width:25% !important">WETTER</a>
+            </div>
+        </div>
+        
+          <!-- Page Layout -->
+        <div id="main">
+        <header class="w3-container w3-padding-32 w3-margin-left w3-margin-right w3-center" id="home">
+        <h1 class="w3-jumbo" id="title">Martin's Website</h1>
+        <p>HSLU Webtech Modul</p>
+        </header>
+        <div class="w3-content w3-justify w3-text-grey w3-row-padding w3-padding-top-32" id="information">
+            <h2><script>document.write(getCookie());</script></h2>
+            <h2 class="w3-text-black">INFORMATION</h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p>
+                <strong>Bitte durchlesen!</strong><br/>
+                Bewegen Sie die Maus auf die Titelüberschrift für einen tollen Neonschild-Effekt.<br/>
+                Beim klick auf ein Menueintrag, werden Sie direkt zu diesem Thema geführt.<br/>
+                Direkt unter dieser Information finden Sie ein Formular, in dem Sie die entsprechenden Angaben in die 
+                Textboxen einfüllen können und dann mit dem "Submit"-Button abschicken.
+                Nach dem absenden wird ein Cookie erstellt (1h Lebensdauer) mit dem man Sie wieder erkennt beim nächsten besuch, 
+                und es wird Ihnen eine Kopie der Nachricht per Mail geschickt.<br/>
+                Nach dem Formular befindet sich ein Canvas mit Code-erzeugter Kunst.</br>
+                Zum Schluss wird ein Webservice angeboten bei welchem Sie nach einer Stadt suchen können,
+                um deren Wetterinformationen zu bekommen.
+            </p>
+            <img src="img/information_webtec.png" alt="banner mit farbigem Hintergrund und Webtech überschrift" style="width: 100%"/>
+        </div>
+        <div id="formular" class="w3-content w3-justify w3-text-grey w3-row-padding w3-padding-top-32">
+            <h2 class="w3-text-black">FORMULAR</h2>
+            <form action="form.php" method="post">
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Hans Meier" required name="name" required></p>
+                <p><input class="w3-input w3-padding-16" type="email" placeholder="example@gmail.com" required name="email" required></p>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Hallo Martin, ..." required name="message" required></p>
+                <p><button class="w3-button w3-light-grey w3-padding-large" type="submit">SENDEN</button></p>
+            </form>
+        </div>
+                
+        <div id="canvas" class="w3-content w3-justify w3-text-grey w3-row-padding w3-padding-top-32">
+            <h2 class="w3-text-black">Canvas</h2>
+            <canvas id="myCanvas" width="600" height="300" style="border:1px solid #000000;">
+        </div>
+
+        <div id="weather" class="w3-content w3-justify w3-text-grey w3-row-padding w3-padding-top-32">
+            <h2 class="w3-text-black">Webservice - Wetter</h2>
+            <h4 class="w3-text-black">Stadt eingeben: </h4>
+            <span id="error"></span>	
+            <input type="text" name="city" id='city' class="w3-input w3-padding-16" placeholder="z.B. Zug oder Cham, CH">
+            <button id="submitWeather" class="w3-button w3-light-grey w3-padding-large w3-margin-top">Suchen</button>
+            <div id="show" lass="w3-content w3-justify w3-text-grey w3-row-padding w3-padding-top-32"></div>
+        </div>
+
+        <footer class="w3-content w3-padding-64 w3-xlarge"></footer>
+    </div>
+    </body>
+</html>
